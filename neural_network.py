@@ -10,7 +10,8 @@ from keras.datasets import mnist
 #전체 데이터셋(dataset)에서 훈련과 테스트 용도로 나눈 것을 훈련세트(training set), 테스트 세트(test set)이라 함.)
 
 #훈련데이터
-print(train_images.shape)
+print(train_images.shape)#배열 크기(60000, 28, 28). 28x28 크기의 정수행렬 6만개가 있는 배열
+#각 행렬은 하나의 흑백 이미지고, 행렬의 각 원소는 0~255사이의 값을 가짐(uint8 타입)
 print(len(train_labels))
 print(train_labels)
 
@@ -74,3 +75,5 @@ test_loss, test_acc = network.evaluate(test_images, test_labels)
 print('test_acc: ', test_acc)
 #훈련세트 정확도보다는 약간 낮음(훈련정확도와 테스트정확도 사이의 차이는 과대적합(overfitting)때문)
 #과대적합-머신러닝 모델이 훈련데이터보다 새로운 데이터에서 성능이 낮아지는 경향을 말함.
+
+

@@ -14,4 +14,5 @@ model = Sequential([
     Dense(32, activation='relu'),
     Dense(2, activation='softmax')
 ])
+
 model.summary()

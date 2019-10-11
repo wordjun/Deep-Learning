@@ -77,7 +77,14 @@ model = Sequential([
 #Optimizer Adam, pass learning grade 0.0001
 #Loss(there are many other types)
 #what will be the output = 'accuracy'
-model.compile(Adam(lr=.0001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+#each time we build a model, before we can train it, we must compile it
+model.compile(Adam(lr=0.0001), loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+#model.optimizer.lr = 0.01 (another way to change learning rate)
+
+#Loss in a neural network
+#use of MSE
+model.loss = "sparse_categorical_crossentropy"
 
 #(training data, train labels of this training data,
 #how many pieces of data sent to the model at once
@@ -85,3 +92,50 @@ model.compile(Adam(lr=.0001), loss='sparse_categorical_crossentropy', metrics=['
 #shuffle->literally..
 #verbose-> how many outputs?
 #model.fit(scaled_train_samples, train_labels, batch_size=10, epochs=20, shuffle='True', verbose=2)
+
+'''
+Learning Rate
+The objective during training is for SGD to minimize the loss between 
+the actual output and the predicted output from out given training samples.
+Step size
+d(loss)/d(weight) * learning rate = Y
+update weights with new Ys
+0.01 ~ 0.0001
+'''
+
+'''
+training set(set of data used to train our model)
+-during each epoch, our model will be trained over and over again on the same data in our training set
+- and continue to learn the features of this data so that later on our model can accurately predict data
+- which has never been seen before(make predictions based on the training data)
+
+validation set
+-separate from the training set, used to validate our model during training
+-with each epoch during training the model will be trained on the data with training set
+-validating data on the validation set
+-classification->loss calculated->weight adjusted
+- Ensure that our model is not over-fitting(model becomes unable to generalize and accurate classifications on the data)
+ to the data in the training set
+ 
+ Test set
+ -test after the model has been trained and validated
+ -unlabeled data (for the model to make predictions)
+ 
+ 
+ Supervised Learning
+ -train, valid set labeled. (sample, label)
+ -ex) different types of reptiles.
+ -image of a lizard, with label "lizard"
+ -labels need to be encoded as 1, and turtles as 1
+ -minimize the loss.
+ 
+ Unsupervised Learning
+'''
+
+#examples:
+
+#a list of tuples [Height, Weight]
+train_samples = [[150, 67], [186, 75], [190, 94], [160, 65], [170, 57]]
+#labels (0 for male, 1 for female)
+train_labels = [0,1,1,0,1]
+#model.fit(x = train_samples, y = train_labels, etc...)
